@@ -219,7 +219,7 @@ export default {
       // });
       setTimeout(() => {
         this.$loading.hide();
-        this.chartDataItems = resultChartData;
+        this.chartDataItems = resultChartData.slice(0, Math.random() * 6);
       }, 3000);
     },
   },
