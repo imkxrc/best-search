@@ -190,8 +190,24 @@ export default {
           areaColor2: `rgb(${Math.floor(Math.random() * 256)},${Math.floor(
             Math.random() * 256
           )},${Math.floor(Math.random() * 256)})`,
-          data1: [0, 20, 40, 80, 300, 800, 700],
-          data2: [0, 250, 450, 750, 450, 30, 5], // item.search_msv.map((m) => m.sv),
+          data1: [
+            Math.random() * 200,
+            Math.random() * 20,
+            Math.random() * 40,
+            Math.random() * 80,
+            Math.random() * 300,
+            Math.random() * 800,
+            Math.random() * 700,
+          ],
+          data2: [
+            Math.random() * 200,
+            Math.random() * 20,
+            Math.random() * 40,
+            Math.random() * 80,
+            Math.random() * 300,
+            Math.random() * 800,
+            Math.random() * 700,
+          ], // item.search_msv.map((m) => m.sv),
           titleText: "Best shoes",
           subTitleText: "Growth 37%",
           xAxisData: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
