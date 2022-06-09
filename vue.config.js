@@ -26,7 +26,7 @@ module.exports = defineConfig({
     // 跨域问题解决 代理（关键部分）
     proxy: {
       '/api': {
-        target: 'https://news-at.zhihu.com/api/4', // 注意！此处为后端提供的真实接口
+        target: 'http://3.141.23.218:5000', // 注意！此处为后端提供的真实接口
         changeOrigin: true, // 允许跨域
         pathRewrite: {
           // 如果接口中是没有api的，那就直接置空，'^/api': ''

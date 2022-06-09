@@ -202,20 +202,17 @@ export default {
       });
       this.chartDataItems = [];
       // 调用数据
-      axios.get("/api/news/latest").then((data) => {
-        console.warn("data", data);
-      });
-      // axios
-      //   .post("/api/interview/keyword_search", {
-      //     login_token: "INTERVIEW_SIMPLY2021",
-      //     search_phrase: "hat",
-      //   })
-      //   .then((data) => {
-      //     console.warn("data", data);
-      //   })
-      //   .catch((ero) => {
-      //     console.warn("ero", ero);
-      //   });
+      axios
+        .post("/api/interview/keyword_search", {
+          login_token: "INTERVIEW_SIMPLY2021",
+          search_phrase: "hat",
+        })
+        .then((data) => {
+          console.warn("data", data);
+        })
+        .catch((ero) => {
+          console.warn("ero", ero);
+        });
       // getPersonInfo({
       //   login_token: "INTERVIEW_SIMPLY2021",
       //   search_phrase: "hat",
