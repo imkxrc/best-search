@@ -4,10 +4,13 @@ import verify from './plugins/vuetify'
 import Vuetify from 'vuetify/lib'
 import '@mdi/font/css/materialdesignicons.css'
 import Loadong from "./loading/loading";
+import rq from "./axios/api.js";
 import 'echarts'
 import ECharts from 'vue-echarts'
+require('./mock') // 引入mock数据，不需要时，则注释掉
 Vue.component('VueEcharts', ECharts)
 Vue.use(Loadong);
+Vue.prototype.$server = rq
 
 Vue.use(Vuetify)
 

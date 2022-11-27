@@ -52,6 +52,7 @@
             sm="12"
             xs="12"
             v-for="(item, index) in chartDataItems"
+            :key="Math.random() * index"
           >
             <div class="echart-container">
               <MyChart :echartParentData="item" />
@@ -66,8 +67,6 @@
 
 <script>
 import MyChart from "@/components/echarts.vue";
-import axios from "axios";
-import { getPersonInfo } from "../axios/api.js";
 
 export default {
   data() {
@@ -120,7 +119,6 @@ export default {
       this.$refs.searchRef.blur();
       console.log(this.text);
       // this.$router.push(`/search/${this.text}`);
-      this.$loading.show();
       let resultEchartList = [
         {
           name: "hat",
@@ -218,23 +216,15 @@ export default {
       });
       this.chartDataItems = [];
       // 调用数据
-      axios
-        .post("/api/interview/keyword_search", {
-          login_token: "INTERVIEW_SIMPLY2021",
-          search_phrase: "hat",
-        })
-        .then((data) => {
-          console.warn("data", data);
-        })
-        .catch((ero) => {
-          console.warn("ero", ero);
-        });
-      // getPersonInfo({
-      //   login_token: "INTERVIEW_SIMPLY2021",
-      //   search_phrase: "hat",
-      // });
+      this.$server.getPersonInfo({
+        login_token: "INTERVIEW_SIMPLY2021",
+        search_phrase: "hat",
+      }).then(data=> {
+        console.log("data", data)
+      }).catch(ero=>{
+        console.warn("请求错误",ero)
+      });
       setTimeout(() => {
-        this.$loading.hide();
         this.chartDataItems = resultChartData.slice(0, Math.random() * 6);
       }, 3000);
     },

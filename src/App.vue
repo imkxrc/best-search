@@ -20,6 +20,20 @@ export default {
   data: () => ({
     //
   }),
+  created(){
+    // this.$server.getBarData().then((data)=>{
+
+    //   console.log("barData", data)
+
+    // }).catch((error)=>{
+    //   console.log("barData Error", error)
+    // })
+
+    // this.$server.getPersonInfo({
+    //     login_token: "INTERVIEW_SIMPLY2021",
+    //     search_phrase: "hat",
+    //   });
+  }
 };
 </script>
 <style lang="scss" scoped>

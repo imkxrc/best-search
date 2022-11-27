@@ -25,30 +25,27 @@ service.interceptors.request.use(config => {
         config.params = {
             ...config.params
         };
-    config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+    config.headers['token'] = 'INTERVIEW_SIMPLY2021';
+    config.headers['Content-Type'] = 'application/json';
 
     return config;
 }, error => { //请求错误处理
-    // app.$vux.toast.show({
-    //     type: 'warn',
-    //     text: error
-    // });
     Promise.reject(error)
 });
 /****** respone拦截器==>对响应做处理 ******/
 service.interceptors.response.use(
     response => { //成功请求到数据
-        Vue.$loading.hide();
-        //这里根据后端提供的数据进行对应的处理
-        if (response.data.result === 'TRUE') {
-            return response.data;
-        } else {
-            console.log('未获取数据');
-        }
+        Vue.timer = setTimeout(() => {
+            Vue.$loading.hide();
+            //这里根据后端提供的数据进行对应的处理
+            if (response.status == '200') {
+                return response.data;
+            } else {
+                console.log('未获取数据');
+            }
+        }, 3000)
     },
     error => { //响应错误处理
-        console.log('error');
-        console.log(error);
         console.log("响应错误", JSON.stringify(error));
 
         // let text = JSON.parse(JSON.stringify(error)).response.status === 404 ?
