@@ -9,7 +9,6 @@
 import Vue from "vue";
 import axios from "axios"
 import qs from "qs";
-import app from "../main.js";
 /****** 创建axios实例 ******/
 const service = axios.create({
     baseURL: '', // api的base_url
