@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <!-- 路由占位符 自动推送合并-->
+      <!-- 路由占位符 自动推-送合并-->
       <router-view></router-view>
     </v-main>
   </v-app>
