@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <!-- 路由占位符-->
+      <!-- 路由占位符 合并远程推送-->
       <router-view></router-view>
     </v-main>
   </v-app>
