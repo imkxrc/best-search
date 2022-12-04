@@ -10,4 +10,4 @@ Function Auto-push-git {
 }
 # 上面实际上定义了一个函数
 Auto-push-git
-# 好! 函数运行起来了
+# 好! 函数运行起来了 Win + R 打开运行窗口, 输入 taskschd.msc 然后回车打开创建任务
