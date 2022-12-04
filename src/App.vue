@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <!-- 路由-占位符 -->
+      <!-- 路由占位符 提交test-->
       <router-view></router-view>
     </v-main>
   </v-app>
