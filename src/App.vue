@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <!-- 路由占位符 修 正 -->
+      <!-- 路由占位符 修 -正 -->
       <router-view></router-view>
     </v-main>
   </v-app>
