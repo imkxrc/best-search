@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <!-- 路由占位符 修正-时间-->
+      <!-- 路由占位符 修正-间-->
       <router-view></router-view>
     </v-main>
   </v-app>
