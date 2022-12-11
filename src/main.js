@@ -4,6 +4,7 @@ import verify from './plugins/vuetify'
 import Vuetify from 'vuetify/lib'
 import '@mdi/font/css/materialdesignicons.css'
 import Loadong from "./loading/loading";
+import store from './store/'
 import rq from "./axios/api.js";
 import 'echarts'
 import ECharts from 'vue-echarts'
@@ -26,5 +27,6 @@ Vue.config.productionTip = false
 new Vue({
   vuetify: verify,
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

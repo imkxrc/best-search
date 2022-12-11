@@ -21,6 +21,7 @@
                   v-on="on"
                   ref="searchRef"
                 ></v-text-field>
+                
               </template>
               <v-list v-if="items.length > 0" class="border-list" dense>
                 <v-list-item
@@ -43,6 +44,12 @@
       <v-col cols="8">
         <div class="current-key mb-6">
           <strong>{{ searchKey }}</strong>
+          <v-checkbox
+                v-model="testObj.checkbox.value"
+                :label="`复选框`"
+                v-if="showCheckBox"
+              ></v-checkbox>
+              testObj.checkbox: {{testObj.checkbox}}
         </div>
         <v-row>
           <v-col
@@ -62,15 +69,19 @@
       </v-col>
       <v-col cols="2"></v-col
     ></v-row>
+    
+    
   </v-container>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import MyChart from "@/components/echarts.vue";
 
 export default {
   data() {
     return {
+      showCheckBox:null,
       text: "",
       showSelect: true,
       items: [],
@@ -84,7 +95,14 @@ export default {
     this.searchKey = this.$route.params.searchKey.replace(/\+/g, " ");
   },
   mounted() {
-    this.search();
+   // this.search();
+  },
+  computed:{
+    ...mapState({
+      testObj:(state)=>{
+        return state.testObj
+      }
+    }),
   },
   components: {
     MyChart,
@@ -116,6 +134,10 @@ export default {
       ];
     },
     search() {
+      this.showCheckBox = true
+      this.$store.commit("setCheckBox",true)
+
+
       this.$refs.searchRef.blur();
       console.log(this.text);
       // this.$router.push(`/search/${this.text}`);
