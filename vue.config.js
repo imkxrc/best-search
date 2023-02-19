@@ -22,12 +22,11 @@ module.exports = defineConfig({
   devServer: {
     port: 3000,
     https: false,
-    hot: true,
+    hot: "only",
     // 跨域问题解决 代理（关键部分）
     proxy: {
       '/api': {
         target: 'http://3.141.23.218:5000', // 注意！此处为后端提供的真实接口
-        // target: 'http://172.18.69.62.:8080',
         changeOrigin: true, // 允许跨域
         pathRewrite: {
           // 如果接口中是没有api的，那就直接置空，'^/api': ''

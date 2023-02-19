@@ -6,13 +6,13 @@ const searchList = () => import('@/components/search-list.vue')
 const SearchIndex = () => import('@/components/searchIndex')
 
 const routes = [{
-    path: '/',
-    component: SearchIndex
-},
-{
-    path: '/search-list/:searchKey',
-    component: searchList
-},
+        path: '/',
+        component: SearchIndex
+    },
+    {
+        path: '/search/:searchKey',
+        component: searchList
+    },
 
 ]
 

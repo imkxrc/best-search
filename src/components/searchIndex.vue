@@ -56,7 +56,7 @@ export default {
   methods: {
     itemClick(item) {
       this.text = item.name;
-      this.$refs.searchRef.blur();
+      this.$refs.search.blur();
       // this.$router.push()
     },
     inputHandle(text) {
@@ -102,7 +102,7 @@ export default {
         return;
       }
       this.$refs.searchRef.blur();
-      this.$router.push(`/search-list/${this.text.replace(/\s/g, "+")}`);
+      this.$router.push(`/search/${this.text.replace(/\s/g, "+")}`);
     },
   },
 };
