@@ -21,7 +21,6 @@
                   v-on="on"
                   ref="searchRef"
                 ></v-text-field>
-                
               </template>
               <v-list v-if="items.length > 0" class="border-list" dense>
                 <v-list-item
@@ -44,12 +43,6 @@
       <v-col cols="8">
         <div class="current-key mb-6">
           <strong>{{ searchKey }}</strong>
-          <v-checkbox
-                v-model="testObj.checkbox.value"
-                :label="`复选框`"
-                v-if="showCheckBox"
-              ></v-checkbox>
-              testObj.checkbox: {{testObj.checkbox}}
         </div>
         <v-row>
           <v-col
@@ -59,6 +52,7 @@
             sm="12"
             xs="12"
             v-for="(item, index) in chartDataItems"
+            :key="Math.random() * index"
           >
             <div class="echart-container">
               <MyChart :echartParentData="item" />
@@ -68,21 +62,15 @@
       </v-col>
       <v-col cols="2"></v-col
     ></v-row>
-    
-    
   </v-container>
 </template>
 
 <script>
-import {mapState} from 'vuex'
 import MyChart from "@/components/echarts.vue";
-import axios from "axios";
-import { getPersonInfo } from "../axios/api.js";
 
 export default {
   data() {
     return {
-      showCheckBox:null,
       text: "",
       showSelect: true,
       items: [],
@@ -96,14 +84,7 @@ export default {
     this.searchKey = this.$route.params.searchKey.replace(/\+/g, " ");
   },
   mounted() {
-   // this.search();
-  },
-  computed:{
-    ...mapState({
-      testObj:(state)=>{
-        return state.testObj
-      }
-    }),
+    this.search();
   },
   components: {
     MyChart,
@@ -114,7 +95,7 @@ export default {
   methods: {
     itemClick(item) {
       this.text = item.name;
-      this.$refs.search.blur();
+      this.$refs.searchRef.blur();
       // this.$router.push()
     },
     inputHandle(text) {
@@ -135,14 +116,9 @@ export default {
       ];
     },
     search() {
-      this.showCheckBox = true
-      this.$store.commit("setCheckBox",true)
-
-
       this.$refs.searchRef.blur();
       console.log(this.text);
       // this.$router.push(`/search/${this.text}`);
-      this.$loading.show();
       let resultEchartList = [
         {
           name: "hat",
@@ -240,23 +216,15 @@ export default {
       });
       this.chartDataItems = [];
       // 调用数据
-      axios
-        .post("/api/interview/keyword_search", {
-          login_token: "INTERVIEW_SIMPLY2021",
-          search_phrase: "hat",
-        })
-        .then((data) => {
-          console.warn("data", data);
-        })
-        .catch((ero) => {
-          console.warn("ero", ero);
-        });
-      // getPersonInfo({
-      //   login_token: "INTERVIEW_SIMPLY2021",
-      //   search_phrase: "hat",
-      // });
+      this.$server.getPersonInfo({
+        login_token: "INTERVIEW_SIMPLY2021",
+        search_phrase: "hat",
+      }).then(data=> {
+        console.log("data", data)
+      }).catch(ero=>{
+        console.warn("请求错误",ero)
+      });
       setTimeout(() => {
-        this.$loading.hide();
         this.chartDataItems = resultChartData.slice(0, Math.random() * 6);
       }, 3000);
     },
