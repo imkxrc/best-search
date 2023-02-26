@@ -220,13 +220,16 @@ export default {
         login_token: "INTERVIEW_SIMPLY2021",
         search_phrase: "hat",
       }).then(data=> {
-        console.log("data", data)
+        setTimeout(() => {
+          console.log("data", data)
+        this.$loading.hide();
+        this.chartDataItems = resultChartData.slice(0, Math.random() * 6);
+      }, 3000);
+        
       }).catch(ero=>{
         console.warn("请求错误",ero)
       });
-      setTimeout(() => {
-        this.chartDataItems = resultChartData.slice(0, Math.random() * 6);
-      }, 3000);
+      
     },
   },
 };
