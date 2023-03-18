@@ -3,7 +3,8 @@
     <v-app-bar app>
       <v-row class="top-bar">
         <v-col cols="2">
-          <router-link to="/"><b>Best</b>Search</router-link>
+          <router-link to="/"><b>Best</b>Search</router-link><br />
+          <router-link class="to-child" :to="{name:'searchListChild'}">跳转到子路由</router-link>
         </v-col>
         <v-col cols="8">
           <div v-on:keyup.enter="search">
@@ -36,6 +37,8 @@
         </v-col>
         <v-col cols="2"> </v-col>
       </v-row>
+    
+    <router-view></router-view>
     </v-app-bar>
 
     <v-row>
@@ -224,7 +227,7 @@ export default {
           console.log("data", data)
         this.$loading.hide();
         this.chartDataItems = resultChartData.slice(0, Math.random() * 6);
-      }, 3000);
+      }, 1000);
         
       }).catch(ero=>{
         console.warn("请求错误",ero)
@@ -235,6 +238,7 @@ export default {
 };
 </script>
 <style scoped>
+
 .echart-container {
   border: 1px solid #ccc;
 }
@@ -269,6 +273,9 @@ export default {
 .v-application a {
   color: #333;
   text-decoration: none;
+}
+.v-application .to-child{
+  color: #1976d2;
 }
 .top-bar {
   justify-content: center;
