@@ -13,6 +13,8 @@ module.exports = defineConfig({
   publicPath:'./',
   lintOnSave: false,
   chainWebpack: config => {
+    
+    config.assetsPublicPath=''
     // 修复HMR
     config.resolve.symlinks(true);
 
